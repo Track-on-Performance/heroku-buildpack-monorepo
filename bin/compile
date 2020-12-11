@@ -19,14 +19,14 @@ APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
     mv "${BUILD_DIR}/packages/tsconfig.base.json" "${STAGE}" &&
     #Copy the application 
     mv "${BUILD_DIR}/packages/${APP_BASE}" "${STAGE}" &&
-    echo "Printing the current directory before delete"
-    ls
+    echo "Printing the current directory before delete (stage dir)"
+    ls "${STAGE}" 
     rm -rf "${BUILD_DIR}" &&
-     echo "Printing the current directory after delete"
-    ls
+     echo "Printing the current directory after delete (build dir)"
+    ls "${BUILD_DIR}"
     mv "${STAGE}/$(basename "$APP_BASE")" "${BUILD_DIR}"
     echo "Final structure"
-    ls
+    ls "${BUILD_DIR}"
     echo "========="
 )
 
