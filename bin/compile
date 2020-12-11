@@ -17,9 +17,11 @@ APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 (
     #Copy the config files necessary for extension
     mv "${BUILD_DIR}/packages/tsconfig.base.json" "${STAGE}" &&
-
+    echo "Build directory: ${BUILD_DIR} at stage: ${STAGE}"
     #Copy the application 
     mv "${BUILD_DIR}/packages/${APP_BASE}" "${STAGE}" &&
+    echo "Deleting all except ${APP_BASE} directory and tsconfig.base.json"
+    rm -rf -v !("${BUILD_DIR}/packages/${APP_BASE}"|"${BUILD_DIR}/packages/tsconfig.base.json") 
     #rm -rf "${BUILD_DIR}" &&
     mv "${STAGE}/$(basename "$APP_BASE")" "${BUILD_DIR}"
 )
