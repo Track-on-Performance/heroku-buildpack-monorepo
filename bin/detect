@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "Monorepo has been detected, buildpack will run in a few seconds.."
+exit 0
